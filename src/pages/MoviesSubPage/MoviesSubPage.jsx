@@ -1,5 +1,18 @@
 import { FaLongArrowAltLeft } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import useFetchMovies from 'hooks/useFetchMovies';
+
+import {
+  MovieWrapper,
+  MovieInfo,
+  MovieTitle,
+  Overview,
+  Genres,
+  Description,
+  AddInfo,
+  AddItem,
+  ItemLink,
+} from './movies-sub-page.styled';
 
 const MoviesSubPage = () => {
   const movie = useFetchMovies();
@@ -12,21 +25,36 @@ const MoviesSubPage = () => {
             <FaLongArrowAltLeft />
             Go back
           </button>
-          <div>
-            <img
-              src={'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path}
-              alt={movie.title}
-            />
-          </div>
-          <div>
-            <h2>{movie.title}</h2>
+          <MovieWrapper>
+            <div>
+              <img
+                src={'https://image.tmdb.org/t/p/w500/' + movie.poster_path}
+                alt={movie.title}
+              />
+            </div>
+            <MovieInfo>
+              <MovieTitle>{movie.title}</MovieTitle>
 
-            <p>User Score: {movie.vote_average * 10}%</p>
-            <h3>Overview</h3>
-            <p>{movie.overview}</p>
-            <h4>Genres</h4>
-            <p>{movie.genres.map(genres => genres.name).join(', ')}</p>
-          </div>
+              <Description>User Score: {movie.vote_average * 10}%</Description>
+              <Overview>Overview</Overview>
+              <Description>{movie.overview}</Description>
+              <Genres>Genres</Genres>
+              <Description>
+                {movie.genres.map(genres => genres.name).join(', ')}
+              </Description>
+              <AddInfo>
+                <Description>Additional information</Description>
+                <ul>
+                  <AddItem>
+                    <ItemLink to={'cast'}>Cast</ItemLink>
+                  </AddItem>
+                  <AddItem>
+                    <ItemLink to={'reviews'}>Reviews</ItemLink>
+                  </AddItem>
+                </ul>
+              </AddInfo>
+            </MovieInfo>
+          </MovieWrapper>
         </>
       )}
     </>

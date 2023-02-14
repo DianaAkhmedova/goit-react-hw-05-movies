@@ -2,11 +2,14 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const List = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
   gap: 15px;
 `;
 
 export const ListItem = styled.li`
-  padding: 10px 5px;
+  padding: 10px 16px;
   border: 1px solid #eeeeee;
   border-radius: 5px;
   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -25,8 +28,8 @@ export const ItemLink = styled(Link)`
 `;
 
 export const PosterThumb = styled.div`
-  width: 240px;
-  height: 134px;
+  width: 300px;
+  height: 450px;
   margin-bottom: 20px;
 `;
 
@@ -36,4 +39,8 @@ export const Poster = styled.img`
   height: 100%;
   border-radius: 5px;
   object-fit: cover;
+`;
+
+export const MovieTitle = styled.p`
+  font-size: 16px;
 `;

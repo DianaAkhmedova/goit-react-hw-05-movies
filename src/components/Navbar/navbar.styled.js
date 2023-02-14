@@ -8,6 +8,11 @@ export const PageNav = styled.nav`
   align-items: flex-start;
 `;
 
+export const NavList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
 export const Item = styled.li`
   &:not(:last-child) {
     margin-right: 20px;

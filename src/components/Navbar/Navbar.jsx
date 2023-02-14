@@ -1,6 +1,6 @@
 import items from './items';
 
-import { PageNav, Link, Icon, Item } from './navbar.styled';
+import { PageNav, NavList, Link, Icon, Item } from './navbar.styled';
 
 const Navbar = () => {
   const elements = items.map(({ id, text, link }) => (
@@ -14,7 +14,7 @@ const Navbar = () => {
       <Link to={'/'}>
         <Icon />
       </Link>
-      <ul>{elements}</ul>
+      <NavList>{elements}</NavList>
     </PageNav>
   );
 };

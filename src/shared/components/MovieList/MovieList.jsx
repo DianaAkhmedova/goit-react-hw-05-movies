@@ -1,18 +1,30 @@
-import { List, ListItem, PosterThumb, ItemLink } from './movie-list.styled';
+import noPoster from '../../../components/images/poster.png';
+
+import {
+  List,
+  ListItem,
+  PosterThumb,
+  ItemLink,
+  MovieTitle,
+} from './movie-list.styled';
 
 const MovieList = ({ movies, page }) => {
   return (
     <List>
-      {movies.map(({ id, title, backdrop_path: image }) => (
+      {movies.map(({ id, title, poster_path: poster }) => (
         <ListItem key={id}>
           <ItemLink to={`${page}${id}`}>
             <PosterThumb>
               <img
-                src={'https://image.tmdb.org/t/p/w500/' + image}
+                src={
+                  poster
+                    ? 'https://image.tmdb.org/t/p/w300/' + poster
+                    : noPoster
+                }
                 alt={title}
               />
             </PosterThumb>
-            <p>{title}</p>
+            <MovieTitle>{title}</MovieTitle>
           </ItemLink>
         </ListItem>
       ))}
