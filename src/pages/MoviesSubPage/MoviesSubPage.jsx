@@ -1,5 +1,4 @@
 import { FaLongArrowAltLeft } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 import useFetchMovies from 'hooks/useFetchMovies';
 
 import {
