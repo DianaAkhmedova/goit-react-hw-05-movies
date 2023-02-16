@@ -36,11 +36,13 @@ export const Link = styled(NavLink)`
   font-weight: 500;
   line-height: 20px;
   color: #6e6d7a;
-  transition: color 200ms ease;
+  transition: color 200ms ease, text-shadow 200ms ease;
 
   &:hover,
   :focus {
     color: #0d0c22;
+    text-shadow: 0px 1px 3px rgb(0 0 0 / 12%), 0px 1px 1px rgb(0 0 0 / 14%),
+      0px 2px 1px rgb(0 0 0 / 20%);
   }
 
   &.active {

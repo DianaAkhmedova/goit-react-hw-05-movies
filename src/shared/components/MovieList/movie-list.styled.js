@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+export const MainTitle = styled.h1`
+  margin-bottom: 20px;
+
+  color: #0d0c22;
+`;
+
 export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;

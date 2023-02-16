@@ -4,6 +4,8 @@ import { useSearchParams, Outlet, useParams } from 'react-router-dom';
 import MovieList from 'shared/components/MovieList/MovieList';
 import { fetchMoviesByName } from 'services/moviesApi';
 
+import { SearchForm, Label, Input, SearchBtn } from './movies-page.styled';
+
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -18,6 +20,7 @@ const MoviesPage = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
     const form = e.currentTarget;
     setSearchParams({ query: form.elements.searchQuery.value });
     form.reset();
@@ -26,10 +29,18 @@ const MoviesPage = () => {
   return (
     <>
       {!id && (
-        <form onSubmit={handleSubmit}>
-          <input type="text" name="searchQuery" />
-          <button type="submit">Search</button>
-        </form>
+        <SearchForm onSubmit={handleSubmit}>
+          <Label>
+            <Input
+              type="text"
+              name="searchQuery"
+              autoFocus={true}
+              placeholder="Movie search"
+            />
+          </Label>
+
+          <SearchBtn type="submit">Search</SearchBtn>
+        </SearchForm>
       )}
       {!id && Boolean(movies.length) && <MovieList movies={movies} page={''} />}
 
