@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, Outlet, useParams } from 'react-router-dom';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 import MovieList from 'shared/components/MovieList/MovieList';
 import { fetchMoviesByName } from 'services/moviesApi';
 
 import { SearchForm, Label, Input, SearchBtn } from './movies-page.styled';
+
+Notify.init({ position: 'center-top', distance: '70px' });
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
@@ -13,15 +16,23 @@ const MoviesPage = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    if (movieName === '' || movieName === null) return;
+    if (movieName === '' || movieName === null) {
+      return;
+    }
 
-    fetchMoviesByName(movieName).then(setMovies);
+    fetchMoviesByName(movieName)
+      .then(setMovies)
+      .catch(error => Notify.failure(error.response.data.status_message));
   }, [movieName]);
 
   const handleSubmit = e => {
     e.preventDefault();
 
     const form = e.currentTarget;
+    if (!form.elements.searchQuery.value) {
+      Notify.failure('Enter a search query');
+      return;
+    }
     setSearchParams({ query: form.elements.searchQuery.value });
     form.reset();
   };

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Notify } from 'notiflix';
 
 import { fetchMovieReviews } from 'services/moviesApi';
 
@@ -10,7 +11,9 @@ const MovieReviewsPage = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetchMovieReviews(id).then(setReviews);
+    fetchMovieReviews(id)
+      .then(setReviews)
+      .catch(error => Notify.failure(error.response.data.status_message));
   }, [id]);
 
   return (

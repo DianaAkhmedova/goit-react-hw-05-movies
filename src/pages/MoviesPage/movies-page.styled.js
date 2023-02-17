@@ -25,7 +25,6 @@ export const Input = styled.input`
   }
 
   &:focus {
-    /* border: 1px solid gray; */
     outline-width: 0;
   }
 `;
@@ -37,7 +36,6 @@ export const SearchBtn = styled.button`
   border: 1px solid rgba(255, 255, 255, 0.3);
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
   border-radius: 4px;
-
   transition: color 200ms ease;
 
   &:hover,

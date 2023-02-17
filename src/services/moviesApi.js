@@ -25,7 +25,6 @@ export const fetchMoviesByName = async query => {
       query,
     },
   });
-
   return data.results;
 };
 

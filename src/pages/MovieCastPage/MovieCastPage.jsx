@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Notify } from 'notiflix';
 
 import { fetchMovieCast } from 'services/moviesApi';
 import noPhoto from '../../components/images/no-photo.png';
@@ -16,10 +17,10 @@ const MovieCastPage = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetchMovieCast(id).then(setCast);
+    fetchMovieCast(id)
+      .then(setCast)
+      .catch(error => Notify.failure(error.response.data.status_message));
   }, [id]);
-
-  console.log(cast);
 
   return (
     <>

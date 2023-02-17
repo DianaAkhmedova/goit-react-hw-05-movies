@@ -1,6 +1,7 @@
+import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { FaLongArrowAltLeft } from 'react-icons/fa';
+
 import useFetchMovies from 'hooks/useFetchMovies';
-import { Outlet } from 'react-router-dom';
 
 import noPoster from '../../components/images/poster.png';
 
@@ -19,12 +20,15 @@ import {
 
 const MoviesSubPage = () => {
   const movie = useFetchMovies();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from || '/';
 
   return (
     <>
       {movie && (
         <>
-          <BackBtn type="button">
+          <BackBtn type="button" onClick={() => navigate(from)}>
             <FaLongArrowAltLeft />
             Go back
           </BackBtn>
@@ -33,7 +37,7 @@ const MoviesSubPage = () => {
               <img
                 src={
                   movie.poster_path
-                    ? 'https://image.tmdb.org/t/p/w500/' + movie.poster_path
+                    ? 'https://image.tmdb.org/t/p/w300/' + movie.poster_path
                     : noPoster
                 }
                 alt={movie.title}
@@ -59,10 +63,14 @@ const MoviesSubPage = () => {
             <SubTitle>Additional information</SubTitle>
             <List>
               <AddItem>
-                <ItemLink to={'cast'}>Cast</ItemLink>
+                <ItemLink to="cast" state={{ from }}>
+                  Cast
+                </ItemLink>
               </AddItem>
               <AddItem>
-                <ItemLink to={'reviews'}>Reviews</ItemLink>
+                <ItemLink to="reviews" state={{ from }}>
+                  Reviews
+                </ItemLink>
               </AddItem>
             </List>
             <Outlet />
