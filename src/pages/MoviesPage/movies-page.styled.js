@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const SearchForm = styled.form`
   display: flex;
   align-items: center;
+  margin-bottom: 30px;
 `;
 
 export const Label = styled.label`

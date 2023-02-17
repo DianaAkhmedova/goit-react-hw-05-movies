@@ -1,7 +1,6 @@
 import noPoster from '../../../components/images/poster.png';
 
 import {
-  MainTitle,
   List,
   ListItem,
   PosterThumb,
@@ -12,7 +11,6 @@ import {
 const MovieList = ({ movies, page }) => {
   return (
     <>
-      <MainTitle>Trending today</MainTitle>
       <List>
         {movies.map(({ id, title, poster_path: poster }) => (
           <ListItem key={id}>

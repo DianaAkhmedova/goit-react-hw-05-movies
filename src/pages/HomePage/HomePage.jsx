@@ -4,6 +4,8 @@ import { Outlet } from 'react-router-dom';
 import MovieList from 'shared/components/MovieList/MovieList';
 import { fetchMovies } from 'services/moviesApi';
 
+import { MainTitle } from 'shared/components/MovieList/movie-list.styled';
+
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
 
@@ -13,6 +15,7 @@ const HomePage = () => {
 
   return (
     <>
+      <MainTitle>Trending today</MainTitle>
       <MovieList movies={movies} page={'movies/'} />
       <Outlet />
     </>
