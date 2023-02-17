@@ -3,7 +3,6 @@ import { LoaderThreeDots } from './loader.styled';
 const Loader = () => {
   return (
     <LoaderThreeDots
-      wrapperClass={styles.Loader}
       height="80"
       width="80"
       radius="9"
